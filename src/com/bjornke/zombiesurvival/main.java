@@ -50,6 +50,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.PigZombie;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Wolf;
@@ -202,6 +203,10 @@ public class main extends JavaPlugin
   private static Field targetSelector;
 
   public static List<String> downedPlayers = new ArrayList();
+  public boolean spawnGiants = false;
+  public boolean spawnPigZombies = false;
+  public int numberOfGiantsToSpawn = 0;
+  public int numberOfPigZombiesToSpawn = 0;
   
   public void onEnable() {
     this.instance = this;
@@ -416,7 +421,15 @@ public class main extends JavaPlugin
       if ((s == 2) && (((Integer)this.zcount.get(map)).intValue() < ((Integer)this.wavemax.get(map)).intValue()) && (!this.spawncontrol))
       {
         Entity ent;
-        if (((Boolean)this.skellywave.get(map)).booleanValue()) {
+        if (this.spawnGiants && this.numberOfGiantsToSpawn > 0){
+        	ent = world.spawnEntity(spawnloc(map), EntityType.GIANT);
+        	numberOfGiantsToSpawn--;
+        } else if (this.spawnPigZombies && this.numberOfPigZombiesToSpawn > 0) {
+        	ent = world.spawnEntity(spawnloc(map), EntityType.PIG_ZOMBIE);
+        	PigZombie p = (PigZombie)ent;
+        	p.setAngry(true);
+        	numberOfPigZombiesToSpawn--;
+        } else if (((Boolean)this.skellywave.get(map)).booleanValue()) {
           ent = world.spawnEntity(spawnloc(map), EntityType.SKELETON);
         } else if (((Boolean)this.wolfwave.get(map)).booleanValue()) {
           ent = world.spawnEntity(spawnloc(map), EntityType.WOLF);
@@ -1120,6 +1133,14 @@ public class main extends JavaPlugin
       else {
         this.skellywave.put(map, Boolean.valueOf(false));
       }
+    }
+    if (this.wave.get(map).intValue() > 9){
+    	this.spawnPigZombies = true;
+    	this.numberOfPigZombiesToSpawn = 5+((this.wave.get(map).intValue()-10)*2);
+    }
+    if (this.wave.get(map).intValue() == 20){
+    	this.spawnGiants = true;
+    	this.numberOfGiantsToSpawn = 1;
     }
     if (Integer.toString(((Integer)this.wave.get(map)).intValue()).endsWith("0")) {
       for (Location blg : this.roundFire.keySet()) {
@@ -1985,11 +2006,14 @@ public class main extends JavaPlugin
       	  p.setNoDamageTicks(200);
       	  PotionEffect slowness = new PotionEffect(PotionEffectType.SLOW, 200, 5);
       	  p.addPotionEffect(slowness, true);
-      	  //TODO: Add runable to kill the player if not revived!
       	  event.setCancelled(true);
       	  final String playerName = p.getDisplayName();
       	  downedPlayers.add(playerName);
       	  p.sendMessage(ChatColor.RED + "You are Down! Quick! Get a player to help you up!");
+      	/*for (String player2 : playersInMap(map)) {
+            Player p2 = Bukkit.getPlayer(player2);
+            p2.sendMessage(ChatColor.RED + playerName + " went down! Quick revive them!");
+      	}*/
       	  
       	  this.getServer().getScheduler().scheduleSyncDelayedTask(this, new Runnable() {
 
@@ -3161,20 +3185,27 @@ public class main extends JavaPlugin
 
   //TODO: Add heal
   @EventHandler
-  public void onHeal(PlayerInteractEntityEvent event)
+  public void onRevive(PlayerInteractEntityEvent event)
   {
-    if (((event.getRightClicked() instanceof Player)) && (event.getPlayer().getItemInHand().getType() == Material.BONE)) {
+	  
+    if (((event.getRightClicked() instanceof Player)) && (event.getPlayer().getItemInHand().getType() == Material.AIR)) {
       Player e = (Player)event.getRightClicked();
       Player p = event.getPlayer();
+      String map = playerGame(p);
       if (isPlayerDown(e.getDisplayName())){
     	  e.setNoDamageTicks(0);
       e.setHealth(20);
-      downedPlayers.remove(e.getDisplayName());
+      downedPlayers.remove(e.getDisplayName());/*
+      for (String player : playersInMap(map)) {
+          Player p2 = Bukkit.getPlayer(player);
+          p2.sendMessage(ChatColor.GREEN + p.getDisplayName() + " has revived " + e.getDisplayName());
+      }
       if (p.getItemInHand().getAmount() > 1)
         p.setItemInHand(new ItemStack(Material.BONE, p.getItemInHand().getAmount() - 1));
       else {
         p.setItemInHand(new ItemStack(Material.AIR, 0));
       }
+      */
     }
     }
   }
