@@ -1,0 +1,264 @@
+## YAML Template.
+name: ZombieSurvival
+main: com.bjornke.zombiesurvival.main
+version: R-2.3
+author: Bjornke
+commands:
+  zsa-door:
+    aliases: [zsadoor, zsa_door]
+    description: Add a door
+    usage: /zsa-door <name> <wave number>
+    permission: zs.adoor
+    permission-message: You don't have <permission>
+  zsr-door:
+    aliases: [zsrdoor, zsr_door]
+    description: Remove a door
+    usage: /zsr-door <name>
+    permission: zs.rdoor
+    permission-message: You don't have <permission>
+  zsa-spawn:
+    aliases: [zsaspawn, zsa_spawn]
+    description: Add a spawn
+    usage: /zsa-spawn <name> <wave number>
+    permission: zs.aspawn
+    permission-message: You don't have <permission>
+  zsr-spawn:
+    aliases: [zsrspawn, zsr_spawn]
+    description: Remove a spawn
+    usage: /zsr-spawn <name>
+    permission: zs.rspawn
+    permission-message: You don't have <permission>
+  zs-start:
+    aliases: [start, zstart, zs_start]
+    description: Force start a game
+    usage: /zs-start <name>
+    permission: zs.start
+    permission-message: You don't have <permission>
+  zs-end:
+    aliases: [end, zend, zs_end]
+    description: Force end a game
+    usage: /zs-end <name>
+    permission: zs.end
+    permission-message: You don't have <permission>
+  zs-create:
+    aliases: [zscreate, zs_create]
+    description: Create a new game! Left click a block to create and set as spawnpoint.
+    usage: /zs-create <name> <zombie multiplier> <max players> <max waves>
+    permission: zs.create
+    permission-message: You don't have <permission>
+  zs-remove:
+    aliases: [zsr, zs_remove, zsremove]
+    description: Remove a game
+    usage: /zs-remove <name>
+    permission: zs.remove
+    permission-message: You don't have <permission>
+  zsa-fire:
+    aliases: [zsafire, zsa_fire]
+    description: Add a 10th round fire block (Netherrack)
+    usage: /zsa-fire <name>
+    permission: zs.afire
+    permission-message: You don't have <permission>
+  zsr-fire:
+    aliases: [zsrfire, zsr_fire]
+    description: Remove a 10th round fire block (Netherrack)
+    usage: /zsr-door <name>
+    permission: zs.rfire
+    permission-message: You don't have <permission>
+  zsa-spectate:
+    aliases: [zsaspectate, zsaspec, zsa_spectate, zsa_spec]
+    description: Add a spawn for spectators
+    usage: /zsa-spectate <name>
+    permission: zs.aspectate
+    permission-message: You don't have <permission>
+  zsr-spectate:
+    aliases: [zsrspectate, zsrspec, zsr_spectate, zsr_spec]
+    description: Remove a spawn for spectators
+    usage: /zsr-spectate <name>
+    permission: zs.rspectate
+    permission-message: You don't have <permission>
+  zsa-lightning:
+    aliases: [zsalightning, zsalight, zsa_lightning, zsa_light]
+    description: Add a game start lighting strike location
+    usage: /zsa-lightning <name>
+    permission: zs.alightning
+    permission-message: You don't have <permission>
+  zsr-lightning:
+    aliases: [zsrlightning, zsrlight, zsr_lightning, zsr_light]
+    description: Remove a game start lighting strike location
+    usage: /zsr-lightning <name>
+    permission: zs.rlighting
+    permission-message: You don't have <permission>
+  zs-reload:
+    aliases: [zsreload, zs_reload]
+    description: Reloads all configs and resets variables
+    usage: /zs-reload
+    permission: zs.reload
+    permission-message: You don't have <permission>
+  zsa-special:
+    aliases: [zsaspecial, zsa_special, zsablock, zsa-block, zsa_block]
+    description: Add a special action block. Must be wool
+    usage: /zsa-special <name>
+    permission: zs.aspecial
+    permission-message: You don't have <permission>
+  zsr-special:
+    aliases: [zsrspecial, zsr_special, zsrblock, zsr-block, zsr_block]
+    description: Remove a special action block. Must be wool
+    usage: /zsr-special <name>
+    permission: zs.rspecial
+    permission-message: You don't have <permission>
+  zsa-waiting:
+    aliases: [zsawaiting, zsa_waiting, zsa-wait, zsawait, zsa_wait]
+    description: Adds a waiting are
+    usage: /zsa-waiting <name>
+    permission: zs.awaiting
+    permission-message: You don't have <permission>
+  zsr-waiting:
+    aliases: [zsrwaiting, zsr_waiting, zsr-wait, zsrwait, zsr_wait]
+    description: Removes a waiting area
+    usage: /zsr-waiting <name>
+    permission: zs.rwaiting
+    permission-message: You don't have <permission>
+  zs-version:
+    aliases: [zsversion, zsv, zs_version]
+    description: Checks version information
+    usage: /zs-version
+    permission: zs.version
+    permission-message: You don't have <permission>
+  zs-c:
+    aliases: [zsc, zs-ec, zs-easycreate, zs_ec, zs_easycreate]
+    description: Easy method for creating a ZombieSurvival map
+    usage: /zs-c
+    permission: zs.create
+    permission-message: You don't have <permission>
+  zstp:
+    descripton: Teleport to a game quickly
+    usage: /zstp <name>
+    permission: zs.tp
+    permission-message: You don't have <permission>
+  zsdebug:
+    description: Prints our debugging/stats info
+    useage: /zsdebug
+    permission: zs.debug
+    permission-message: You don't have <permission>
+  stats:
+    description: Displays current game information
+    usage: /stats OR /stats <username>
+    permission: zs.stats
+    permission-message: You don't have <permission>
+  zshelp:
+    description: Displays list of commands
+    usage: /zshelp
+    permission: zs.help
+    permission-message: You don't have <permission>
+  whisper:
+    description: Send a secret message to a player
+    usage: /whisper <playername> <Message>
+    permission: zs.whisper
+    permission-message: You don't have <permission>
+  bsapj:
+    aliases: [zs-join, zjoin]
+    description: Join a game
+    usage: /join <name>
+    permission: zs.join
+    permission-message: You don't have <permission>
+  bsapl:
+    aliases: [zs-leave, zleave]
+    description: Leave a game
+    usage: /leave
+    permission: zs.leave
+    permission-message: You don't have <permission>
+permissions:
+  zs.*:
+    description: All commands
+    children:
+      zs.adoor: true
+      zs.rdoor: true
+      zs.aspawn: true
+      zs.rspawn: true
+      zs.start: true
+      zs.end: true
+      zs.create: true
+      zs.remove: true
+      zs.afire: true
+      zs.rfire: true
+      zs.aspectate: true
+      zs.rspectate: true
+      zs.alightning: true
+      zs.rlightning: true
+      zs.reload: true
+      zs.aspecial: true
+      zs.rspecial: true
+      zs.awaiting: true
+      zs.rwaiting: true
+      zs.version: true
+      zs.tp: true
+      zs.debug: true
+      zs.stats: true
+      zs.help: true
+      zs.join: true
+      zs.leave: true
+      zs.whisper: true
+      zs.signs: true
+      zs.bypass: true
+      zs.donator: true
+  zs.adoor:
+    default: op
+  zs.rdoor:
+    default: op
+  zs.aspawn:
+    default: op
+  zs.rspawn:
+    default: op
+  zs.start:
+    default: op
+  zs.end:
+    default: op
+  zs.create:
+    default: op
+  zs.remove:
+    default: op
+  zs.afire:
+    default: op
+  zs.rfire:
+    default: op
+  zs.aspectate:
+    default: op
+  zs.rspectate:
+    default: op
+  zs.alightning:
+    default: op
+  zs.rlightning:
+    default: op
+  zs.reload:
+    default: op
+  zs.aspecial:
+    default: op
+  zs.rspecial:
+    default: op
+  zs.awaiting:
+    default: op
+  zs.rwaiting:
+    default: op
+  zs.version:
+    default: op
+  zs.tp:
+    default: op
+  zs.debug:
+    default: op
+  zs.stats:
+    default: true
+  zs.help:
+    default: true
+  zs.join:
+    description: Find out!
+    default: true
+  zs.leave:
+    default: true
+  zs.whisper:
+    default: true
+  zs.signs:
+    default: true
+  zs.bypass:
+    default: false
+  zs.donator:
+    default: false

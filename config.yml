@@ -1,0 +1,86 @@
+# Minimum number of players to start a game 
+start-player-count: 2
+#Command used to join, DO NOT include the /
+join-commands: [join, zs-join]
+#Command used to leave, DO NOT include the /
+leave-commands: [leave, zs-leave]
+# Automation Enabled?
+automated: false
+#Time before new game when automated, in SECONDS!
+auto-cooldown: 120
+#Automation Join Message - for automated servers only!
+auto-join-message: Welcome to the server! We are running automated ZombieSurvival games!
+# Used for automated servers so that players cannot break blocks while in waiting area
+auto-anti-grief: false
+#Items at join? 
+items-at-join: true
+#Only works if using an economy plugin, percent to deduct from player when they die. 0.00-1.00
+death-loss-percent: 0.08
+#Seconds between waves
+wave-wait: 20
+#How often do zombies drop items? 0-never 1/n chance (so if set to 2 chance is 50%)
+drop-chance: 2
+#Difficulty Multiplier, (0 is off)
+health-multi: 1.00
+#Damage Multiplier, between (0 is off)
+damage-multi: 0.20
+#Infectious Material (water and cobweb)
+infect-mat: true
+#Allow Spectate (Can playrs fly around and such after death??)
+allow-spectate: true
+#Perpetual Night (Forces time back to midnight every second)
+perp-night: false
+#Runner Chance 0- disabled 1/n chance (so if set to 2 chance is 50%)
+runner-chance: 10
+#Bite Effects Chance 0 disabled, 1/n chance (so if set to 2 chance is 50%)
+effect-chance: 20
+#Empty Account on /leave and when game is over (USED ONLY FOR VAULT)
+empty-account: true
+#Force players to world spawn on server join (useful for automated servers)
+force-spawn: false
+#How fast normal zombies seek players 0.23 is NORMAL SPEED
+seek-speed: 0.23
+#How fast Runner (FAST) zombies seek players (0.40 is default)
+fast-seek-speed: 0.40
+#Bite effect length in seconds (how long the potion effect is active)
+bite-effect-length: 10
+#How many blocks from the sign to search for door (in a RADIUS)
+buy-door-find-radius: 6
+#If they die by non-human do they respawn?
+death-non-human-respawn: true
+#Things like Lava, Fire, Sun, etc. hurt zombies?
+all-hurt: true
+#Leave timer to rejoin? In seconds!
+leave-timer: 30
+#Seperate Inventories between games/real world
+inventory-save: true
+#force inventory clear on global join
+inventory-clear-join: false
+#Force points if using economy system
+force-points: false
+#For those people looking to have special abilities for some folk
+use-donator-perks: false
+#heal players after each round
+heal-player-new-wave: true
+#Skelly wave chance 1/n chance 0-disable
+skelly-wave-chance: 5
+#wolves should spawn on every 10th wave?
+wolves-every-10th-wave: true
+#Items they shall get when joining a game 0-nothing
+join-items:
+- 0
+#What armor should they get at join if items-at-join true? 0-nothing
+armor-items:
+- 0
+#What items can Zombies drop? Only 1 item drops at random 0-nothing
+drop-items:
+- 0
+# List of blocks to be allowed broken during game (Block ID) 0-nothing
+allowbreak:
+- 0
+# List of blocks to be allowed placed during game (Block ID) 0-nothing
+allowplace:
+- 0
+#List of items to put into the mystery box upon purchase. 0-nothing
+mysterybox-items:
+- 0
